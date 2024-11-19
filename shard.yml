@@ -1,0 +1,9 @@
+name: chaos
+version: 0.1.0
+
+authors:
+  - Gabriel Laureano <gabriel.oliveira@simeon.com.br>
+
+crystal: '>= 1.14.0'
+
+license: MIT
