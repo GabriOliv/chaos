@@ -2,7 +2,7 @@ name: chaos
 version: 0.1.0
 
 authors:
-  - Gabriel Laureano <gabriel.oliveira@simeon.com.br>
+  - Gabriel Laureano
 
 crystal: '>= 1.14.0'
 
