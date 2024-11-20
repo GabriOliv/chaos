@@ -8,6 +8,8 @@ Some Chaos In Your Code.
 [![Crystal Version](https://img.shields.io/badge/Crystal-1.14.0-black?logo=crystal)](https://crystal-lang.org/)
 [![GitHub Release](https://img.shields.io/github/v/release/gabrioliv/chaos?display_name=release&logo=crystal&color=white)](https://github.com/GabriOliv/chaos/releases)
 
+![CI Tests Workflow](https://img.shields.io/github/actions/workflow/status/gabrioliv/chaos/ci.yml?logo=github)
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
