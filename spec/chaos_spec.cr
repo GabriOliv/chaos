@@ -1,9 +1,25 @@
 require "./spec_helper"
 
 describe Chaos do
-  # TODO: Write tests
+  it "has a version number" do
+    Chaos::VERSION.should_not be_nil
+  end
 
-  it "works" do
-    false.should eq(true)
+  it "initializes with default probability" do
+    chaos = Chaos::Chaos.new
+    chaos.probability.should eq(0.5)
+  end
+
+  it "changes the probability" do
+    chaos = Chaos::Chaos.new
+    chaos.set_probability(0.8)
+    chaos.probability.should eq(0.8)
+  end
+
+  it "resets the probability to default" do
+    chaos = Chaos::Chaos.new
+    chaos.set_probability(0.8)
+    chaos.reset_probability
+    chaos.probability.should eq(0.5)
   end
 end
