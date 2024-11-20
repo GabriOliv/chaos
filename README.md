@@ -6,6 +6,7 @@
 Some Chaos In Your Code.
 
 [![Crystal Version](https://img.shields.io/badge/Crystal-1.14.0-black?logo=crystal)](https://crystal-lang.org/)
+[![GitHub Release](https://img.shields.io/github/v/release/gabrioliv/chaos?display_name=release&logo=crystal&color=white)](https://github.com/GabriOliv/chaos/releases)
 
 ## Installation
 
@@ -23,9 +24,11 @@ Some Chaos In Your Code.
 
 ```crystal
 require "chaos"
-```
 
-TODO: Write usage instructions here
+chaos = Chaos::Chaos.new
+chaos.set_probability(0.8)
+puts chaos.probability
+```
 
 ## Development
 
