@@ -29,16 +29,26 @@ TODO: Write usage instructions here
 
 ## Development
 
-TODO: Write development instructions here
+1. Clone the repository
+2. Enter the project folder
+3. Run the tests with `crystal spec --verbose`
+4. Make your changes
 
 ## Contributing
 
 1. Fork it (<https://github.com/gabrioliv/chaos/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+3. Make your changes
+	1. Run the tests with `crystal spec --verbose`
+	2. Make sure the code is formatted with `crystal tool format`
+	3. Maintain and update the tests
+	4. Update the documentation
+4. Commit your changes (`git commit -am 'Add some feature'`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create a new Pull Request
 
 ## Contributors
 
 - [Gabriel Laureano](https://github.com/GabriOliv) - creator and maintainer
+
+---
