@@ -24,19 +24,19 @@ describe Chaos do
   end
 
   # chaos return with Nil
-  it "returns a random value of type nil" do
+  it "chaos - nil: returns a correct value" do
     chaos = Chaos::Chaos.new
     chaos.chaos(nil).should eq(nil)
   end
 
   # chaos return with Bool
-  it "returns a correct value of type bool" do
+  it "chaos - bool: returns a correct value" do
     chaos = Chaos::Chaos.new
     chaos.set_probability(0.0)
     chaos.chaos(true).should be_true
   end
 
-  it "returns a chaos value of type bool" do
+  it "chaos - bool: returns a chaotic value" do
     chaos = Chaos::Chaos.new
     chaos.set_probability(1.0)
     chaos.chaos(true).should be_false
@@ -57,20 +57,47 @@ describe Chaos do
   # chaos return with Char
 
   # chaos return with String
-  it "returns a correct value of type string" do
+  it "chaos - string: returns a correct value" do
     chaos = Chaos::Chaos.new
     chaos.set_probability(0.0)
     chaos.chaos("abcdefghi").should eq("abcdefghi")
   end
 
-  it "returns a chaos value of type string" do
+  it "chaos - string: returns a chaotic value" do
     chaos = Chaos::Chaos.new
     chaos.set_probability(1.0)
-    chaos.chaos("abcdefghi").should eq("ihgfedcba")
+    chaos.chaos("abcdefghi").should_not eq("abcdefghi")
+  end
+
+  it "chaos - string: returns a chaotic value keeping integrity" do
+    chaos = Chaos::Chaos.new
+    chaos.set_probability(1.0)
+    result = chaos.chaos("abcdefghi")
+    result.chars.sort.join.should eq("abcdefghi")
   end
 
   # chaos return with Symbol
+
   # chaos return with Array
+  it "chaos - array: returns a correct value" do
+    chaos = Chaos::Chaos.new
+    chaos.set_probability(0.0)
+    chaos.chaos([1, 2, 3, 4, 5]).should eq([1, 2, 3, 4, 5])
+  end
+
+  it "chaos - array: returns a chaotic value" do
+    chaos = Chaos::Chaos.new
+    chaos.set_probability(1.0)
+    chaos.chaos([1, 2, 3, 4, 5]).should_not eq([1, 2, 3, 4, 5])
+  end
+
+  it "chaos - array: returns a chaotic value keeping integrity" do
+    chaos = Chaos::Chaos.new
+    chaos.set_probability(1.0)
+    result = chaos.chaos([1, 2, 3, 4, 5])
+    result.sort.should eq([1, 2, 3, 4, 5])
+  end
+
   # chaos return with Array-like
   # chaos return with Hash
   # chaos return with Hash-like

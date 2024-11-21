@@ -105,14 +105,43 @@ module Chaos
 
     # Char
 
-    # String
+    # Returns a chaotic string value based on the given probability.
+    #
+    # This method takes a `String` variable as input and returns the same variable unless
+    # a random value generated is less than the current chaos probability, in which case
+    # it returns the reversed value of the input `variable`.
+    #
+    # Example:
+    #
+    # ```
+    # chaos = Chaos::Chaos.new
+    # chaos.set_probability(0.8)
+    # chaos.chaos("abcdefghi") # => random value of type String based on the probability
+    # ```
     def chaos(variable : String) : String
       rand < @probability ? variable.reverse : variable
+      rand < @probability ? variable.chars.shuffle.join : variable
     end
 
     # Symbol
 
-    # Array
+    # Returns a chaotic array value based on the given probability.
+    #
+    # This method takes an `Array` variable as input and returns the same variable unless
+    # a random value generated is less than the current chaos probability, in which case
+    # it returns the reversed value of the input `variable`.
+    #
+    # Example:
+    #
+    # ```
+    # chaos = Chaos::Chaos.new
+    # chaos.set_probability(0.8)
+    # chaos.chaos([1, 2, 3, 4, 5]) # => random value of type Array based on the probability
+    # ```
+    def chaos(variable : Array) : Array
+      rand < @probability ? (variable = variable.reverse) : variable
+      rand < @probability ? (variable = variable.shuffle) : variable
+    end
 
     # Array-like
 
