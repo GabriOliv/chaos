@@ -12,13 +12,13 @@ describe Chaos do
 
   it "changes the probability" do
     chaos = Chaos::Chaos.new
-    chaos.set_probability(0.8)
+    chaos.probability = 0.8
     chaos.probability.should eq(0.8)
   end
 
   it "resets the probability to default" do
     chaos = Chaos::Chaos.new
-    chaos.set_probability(0.8)
+    chaos.probability = 0.8
     chaos.reset_probability
     chaos.probability.should eq(0.5)
   end
@@ -32,13 +32,13 @@ describe Chaos do
   # chaos return with Bool
   it "chaos - bool: returns a correct value" do
     chaos = Chaos::Chaos.new
-    chaos.set_probability(0.0)
+    chaos.probability = 0.0
     chaos.chaos(true).should be_true
   end
 
   it "chaos - bool: returns a chaotic value" do
     chaos = Chaos::Chaos.new
-    chaos.set_probability(1.0)
+    chaos.probability = 1.0
     chaos.chaos(true).should be_false
   end
 
@@ -59,19 +59,19 @@ describe Chaos do
   # chaos return with String
   it "chaos - string: returns a correct value" do
     chaos = Chaos::Chaos.new
-    chaos.set_probability(0.0)
+    chaos.probability = 0.0
     chaos.chaos("abcdefghi").should eq("abcdefghi")
   end
 
   it "chaos - string: returns a chaotic value" do
     chaos = Chaos::Chaos.new
-    chaos.set_probability(1.0)
+    chaos.probability = 1.0
     chaos.chaos("abcdefghi").should_not eq("abcdefghi")
   end
 
   it "chaos - string: returns a chaotic value keeping integrity" do
     chaos = Chaos::Chaos.new
-    chaos.set_probability(1.0)
+    chaos.probability = 1.0
     result = chaos.chaos("abcdefghi")
     result.chars.sort.join.should eq("abcdefghi")
   end
@@ -81,19 +81,19 @@ describe Chaos do
   # chaos return with Array
   it "chaos - array: returns a correct value" do
     chaos = Chaos::Chaos.new
-    chaos.set_probability(0.0)
+    chaos.probability = 0.0
     chaos.chaos([1, 2, 3, 4, 5]).should eq([1, 2, 3, 4, 5])
   end
 
   it "chaos - array: returns a chaotic value" do
     chaos = Chaos::Chaos.new
-    chaos.set_probability(1.0)
+    chaos.probability = 1.0
     chaos.chaos([1, 2, 3, 4, 5]).should_not eq([1, 2, 3, 4, 5])
   end
 
   it "chaos - array: returns a chaotic value keeping integrity" do
     chaos = Chaos::Chaos.new
-    chaos.set_probability(1.0)
+    chaos.probability = 1.0
     result = chaos.chaos([1, 2, 3, 4, 5])
     result.sort.should eq([1, 2, 3, 4, 5])
   end

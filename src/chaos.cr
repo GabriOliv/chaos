@@ -5,17 +5,7 @@ module Chaos
     # Default probability
     DEFAULT_PROBABILITY = 0.5
 
-    # Initialize with default probability
-    #
-    # Example:
-    #
-    # ```
-    # chaos = Chaos::Chaos.new
-    # ```
-    def initialize
-      # The instance variable `@probability` is initialized with the default probability.
-      @probability = DEFAULT_PROBABILITY
-    end
+    @probability : Float64 = DEFAULT_PROBABILITY
 
     # Getter for the current probability
     #
@@ -23,35 +13,34 @@ module Chaos
     #
     # ```
     # chaos = Chaos::Chaos.new
-    # chaos.probability # => 0.5
+    # puts chaos.probability # => 0.5
     # ```
-    def probability : Float64
+    def probability=(@probability : Float64)
+    end
+
+    # Setter for the new probability
+    #
+    # Example:
+    #
+    # ```
+    # chaos = Chaos::Chaos.new
+    # chaos.probability = 0.8
+    # puts chaos.probability # => 0.8
+    # ```
+    def probability
       @probability
     end
 
-    # Set a new probability
+    # Resets probability to its default value
     #
     # Example:
     #
     # ```
     # chaos = Chaos::Chaos.new
-    # chaos.set_probability(0.8)
-    # chaos.probability # => 0.8
-    # ```
-    def set_probability(new_probability : Float64)
-      @probability = new_probability
-    end
-
-    # Reset to the default probability
-    #
-    # Example:
-    #
-    # ```
-    # chaos = Chaos::Chaos.new
-    # chaos.set_probability(0.8)
-    # chaos.probability # => 0.8
+    # chaos.probability = 0.8
+    # puts chaos.probability # => 0.8
     # chaos.reset_probability
-    # chaos.probability # => 0.5
+    # puts chaos.probability # => 0.5
     # ```
     def reset_probability
       @probability = DEFAULT_PROBABILITY
@@ -72,8 +61,8 @@ module Chaos
     #
     # ```
     # chaos = Chaos::Chaos.new
-    # chaos.set_probability(0.8)
-    # chaos.chaos(true) # => random value of type Bool based on the probability
+    # chaos.probability = 0.8
+    # puts chaos.chaos(true) # => random value of type Bool based on the probability
     # ```
     def chaos(variable : Bool) : Bool
       rand < @probability ? !variable : variable
@@ -115,8 +104,8 @@ module Chaos
     #
     # ```
     # chaos = Chaos::Chaos.new
-    # chaos.set_probability(0.8)
-    # chaos.chaos("abcdefghi") # => random value of type String based on the probability
+    # chaos.probability = 0.8
+    # chaos.chaos("abcdefghi") # => shuffled string based on the probability
     # ```
     def chaos(variable : String) : String
       rand < @probability ? variable.reverse : variable
@@ -135,8 +124,8 @@ module Chaos
     #
     # ```
     # chaos = Chaos::Chaos.new
-    # chaos.set_probability(0.8)
-    # chaos.chaos([1, 2, 3, 4, 5]) # => random value of type Array based on the probability
+    # chaos.probability = 0.8
+    # chaos.chaos([1, 2, 3, 4, 5]) # => shuffled array based on the probability
     # ```
     def chaos(variable : Array) : Array
       rand < @probability ? (variable = variable.reverse) : variable
