@@ -50,16 +50,34 @@ puts chaos.chaos(true) # => random value of type Bool based on the probability
 
 ## Contributing
 
-1. Fork it (<https://github.com/gabrioliv/chaos/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Make your changes
-4. Maintain the quality steps:
-	1. Maintain tests updated (`crystal spec -v --fail-fast`)
-	2. Maintain the formatting: (`crystal tool format`)
-	4. Update the documentation: (`crystal docs`)
-5. Commit your changes (`git commit -am 'Add some feature'`)
-6. Push to the branch (`git push origin my-new-feature`)
-7. Create a new Pull Request
+1. Fork the repository: [Fork Chaos](https://github.com/gabrioliv/chaos/fork)
+2. Create your feature branch:  
+   ```bash
+   git checkout -b my-new-feature
+   ```
+3. Make your changes.
+4. Follow these quality steps to ensure consistency:
+   - Update and run tests:  
+     ```bash
+     crystal spec -v --fail-fast
+     ```
+   - Format your code:  
+     ```bash
+     crystal tool format
+     ```
+   - Update the documentation:  
+     ```bash
+     crystal docs
+     ```
+5. Commit your changes:  
+   ```bash
+   git commit -am 'Add some feature'
+   ```
+6. Push the branch:  
+   ```bash
+   git push origin my-new-feature
+   ```
+7. Create a new Pull Request.
 
 ## Contributors
 
