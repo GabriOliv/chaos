@@ -28,15 +28,24 @@ Some Chaos In Your Code.
 require "chaos"
 
 chaos = Chaos::Chaos.new
-chaos.set_probability(0.8)
-puts chaos.probability
+chaos.probability = 0.8 # chaos probability -> 80%
+puts chaos.chaos(true) # => random value of type Bool based on the probability
 ```
 
 ## Development
 
 1. Clone the repository
+	```
+	git clone git@github.com:GabriOliv/chaos.git
+	```
 2. Enter the project folder
-3. Run the tests with `crystal spec --verbose`
+	```
+	cd chaos
+	```
+3. Run the tests
+	```
+	crystal spec -v --fail-fast
+	```
 4. Make your changes
 
 ## Contributing
@@ -44,13 +53,13 @@ puts chaos.probability
 1. Fork it (<https://github.com/gabrioliv/chaos/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Make your changes
-	1. Run the tests with `crystal spec --verbose`
-	2. Make sure the code is formatted with `crystal tool format`
-	3. Maintain and update the tests
-	4. Update the documentation
-4. Commit your changes (`git commit -am 'Add some feature'`)
-5. Push to the branch (`git push origin my-new-feature`)
-6. Create a new Pull Request
+4. Maintain the quality steps:
+	1. Maintain tests updated (`crystal spec -v --fail-fast`)
+	2. Maintain the formatting: (`crystal tool format`)
+	4. Update the documentation: (`crystal docs`)
+5. Commit your changes (`git commit -am 'Add some feature'`)
+6. Push to the branch (`git push origin my-new-feature`)
+7. Create a new Pull Request
 
 ## Contributors
 
