@@ -1,13 +1,19 @@
-
 ![chaos](https://repository-images.githubusercontent.com/890686002/646de726-363a-408a-af43-d5e1612b6b5c)
 
 # Chaos
 
-Some Chaos In Your Code.
+[![Crystal Version](https://img.shields.io/badge/Crystal-1.14.0-black?logo=crystal&style=flat-square)](https://crystal-lang.org/)
+[![GitHub Release](https://img.shields.io/github/v/release/gabrioliv/chaos?display_name=release&logo=crystal&color=white&style=flat-square)](https://github.com/GabriOliv/chaos/releases)
+[![CI Tests Workflow](https://img.shields.io/github/actions/workflow/status/gabrioliv/chaos/ci.yml?logo=github&style=flat-square)](https://github.com/GabriOliv/chaos/actions)
 
-[![Crystal Version](https://img.shields.io/badge/Crystal-1.14.0-black?logo=crystal)](https://crystal-lang.org/)
-[![GitHub Release](https://img.shields.io/github/v/release/gabrioliv/chaos?display_name=release&logo=crystal&color=white)](https://github.com/GabriOliv/chaos/releases)
-![CI Tests Workflow](https://img.shields.io/github/actions/workflow/status/gabrioliv/chaos/ci.yml?logo=github)
+[Install](https://github.com/GabriOliv/chaos#installation) |
+[Usage](https://github.com/GabriOliv/chaos#usage) |
+[Development](https://github.com/GabriOliv/chaos#development) |
+[Contributing](https://github.com/GabriOliv/chaos#contributing) |
+[Shards.info](https://shards.info/github/GabriOliv/chaos) | 
+[Docs on CrystalDoc](https://crystaldoc.info/github/GabriOliv/chaos/)
+
+---
 
 ## Installation
 
@@ -77,9 +83,5 @@ puts chaos.chaos(true) # => random value of type Bool based on the probability
    git push origin my-new-feature
    ```
 7. Create a new Pull Request.
-
-## Contributors
-
-- [Gabriel Laureano](https://github.com/GabriOliv) - creator and maintainer
 
 ---
