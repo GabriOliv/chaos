@@ -227,23 +227,51 @@ module Chaos
     end
 
     # Char
+    def chaos(variable : Char) : Char
+      if rand < @probability
+        # Safe char interval (0..0xd7ff and 0xe000..0x10ffff)
+
+        # interval1 = (0_u32..0xd7ff_u32)
+        interval1Begin = 0_u32
+        interval1Size = 55296
+
+        # interval2 = (0xe000_u32..0x10ffff_u32)
+        interval2Begin = 57344
+        interval2Size = 1056768
+
+        # Total size of the two intervals
+        total_size = 1112064
+        random_position = rand(0...total_size)
+
+        # Determine which interval the random position falls into
+        random_value = if random_position < interval1Size
+                         interval1Begin + random_position
+                       else
+                         interval2Begin + (random_position - interval1Size)
+                       end
+
+        random_value.chr
+      else
+        variable
+      end
+    end
 
     # Returns a chaotic string value based on the given probability.
     #
     # This method takes a `String` variable as input and returns the same variable unless
     # a random value generated is less than the current chaos probability, in which case
-    # it returns the reversed value of the input `variable`.
+    # it returns a chaotic string based on the input `variable`.
     #
     # Example:
     #
     # ```
     # chaos = Chaos::Chaos.new
     # chaos.probability = 0.8
-    # chaos.chaos("abcdefghi") # => shuffled string based on the probability
+    # chaos.chaos("abcdefghi") # => chaotic string based on the probability
     # ```
     def chaos(variable : String) : String
-      rand < @probability ? variable.reverse : variable
-      rand < @probability ? variable.chars.shuffle.join : variable
+      rand < @probability ? (variable = variable.chars.shuffle.join) : variable
+      rand < @probability ? (variable = variable.each_char.map { |c| rand < @probability ? chaos(c) : c }.join) : variable
     end
 
     # Symbol

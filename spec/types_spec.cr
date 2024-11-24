@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe Chaos do
+describe "Chaos Class - Types Method Overloading" do
   # chaos return with Nil
   it "chaos - nil: returns a correct value" do
     chaos = Chaos::Chaos.new
@@ -177,6 +177,17 @@ describe Chaos do
   end
 
   # chaos return with Char
+  it "chaos - char: returns a correct value" do
+	chaos = Chaos::Chaos.new
+	chaos.probability = 0.0
+	chaos.chaos('a').should eq('a')
+  end
+
+  it "chaos - char: returns a chaotic value" do
+	chaos = Chaos::Chaos.new
+	chaos.probability = 1.0
+	chaos.chaos('a').should_not eq('a')
+  end
 
   # chaos return with String
   it "chaos - string: returns a correct value" do
@@ -189,13 +200,6 @@ describe Chaos do
     chaos = Chaos::Chaos.new
     chaos.probability = 1.0
     chaos.chaos("abcdefghi").should_not eq("abcdefghi")
-  end
-
-  it "chaos - string: returns a chaotic value keeping integrity" do
-    chaos = Chaos::Chaos.new
-    chaos.probability = 1.0
-    result = chaos.chaos("abcdefghi")
-    result.chars.sort.join.should eq("abcdefghi")
   end
 
   # chaos return with Symbol
