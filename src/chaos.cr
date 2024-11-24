@@ -15,7 +15,8 @@ module Chaos
     # chaos = Chaos::Chaos.new
     # puts chaos.probability # => 0.5
     # ```
-    def probability=(@probability : Float64)
+    def probability
+      @probability
     end
 
     # Setter for the new probability
@@ -27,8 +28,11 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.probability # => 0.8
     # ```
-    def probability
-      @probability
+    def probability=(value : Float64)
+      if value < 0.0 || value > 1.0
+        raise ArgumentError.new("Probability of Chaos must be between 0 and 1")
+      end
+      @probability = value
     end
 
     # Resets probability to its default value

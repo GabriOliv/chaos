@@ -19,6 +19,20 @@ describe Chaos do
       chaos.probability.should eq(0.8)
     end
 
+    it "raises an error if the probability is higher than range" do
+      chaos = Chaos::Chaos.new
+      expect_raises(ArgumentError) do
+        chaos.probability = 1.1
+      end
+    end
+
+    it "raises an error if the probability is lower than range" do
+      chaos = Chaos::Chaos.new
+      expect_raises(ArgumentError) do
+        chaos.probability = -0.1
+      end
+    end
+
     it "resets the probability to default" do
       chaos = Chaos::Chaos.new
       chaos.probability = 0.8
