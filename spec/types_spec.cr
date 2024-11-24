@@ -1,5 +1,9 @@
 require "./spec_helper"
 
+class TestingRange
+  property name : String = "TEST"
+end
+
 describe "Chaos Class - Types Method Overloading" do
   # chaos return with Nil
   it "chaos - nil: returns a correct value" do
@@ -234,4 +238,12 @@ describe "Chaos Class - Types Method Overloading" do
   # chaos return with Proc
   # chaos return with Command
 
+  describe "chaos - unhandled type" do
+    it "returns the same value" do
+      chaos = Chaos::Chaos.new
+      chaos.probability = 0.0
+      newObject = TestingRange.new
+      chaos.chaos(newObject).should eq(newObject)
+    end
+  end
 end

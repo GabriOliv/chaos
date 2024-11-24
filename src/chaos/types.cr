@@ -323,5 +323,29 @@ module Chaos
     # Proc
 
     # Command
+
+    # Generic unhandled type
+    #
+    # This method is called when the type is not handled by the method overloading.
+    #
+    # Returns the same variable passed as input.
+    #
+    # Example:
+    #
+    # ```
+    # class Test
+    #   property name : String = "TEST"
+    # end
+    #
+    # object = Test.new
+    #
+    # chaos = Chaos::Chaos.new
+    # chaos.probability = 0.8
+    #
+    # chaos.chaos(object) # => object
+    # ```
+    def chaos(value)
+      value
+    end
   end
 end
