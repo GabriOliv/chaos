@@ -226,7 +226,7 @@ module Chaos
       rand < @probability ? (variable = Random.rand(0.0...1.0).to_f64) : variable
     end
 
-    # Returns a chaotic char `Char` value based on the given probability.
+    # Returns a chaotic char value based on the given probability.
     #
     # This method takes a `Char` variable as input and returns the same variable unless
     # a random value generated is less than the current chaos probability, in which case
@@ -312,7 +312,6 @@ module Chaos
 
     # Hash-like
 
-    # Range
     # Returns a chaotic range value based on the given probability.
     #
     # This method takes a `Range` variable as input and returns the same variable unless
