@@ -313,6 +313,50 @@ module Chaos
     # Hash-like
 
     # Range
+    # Returns a chaotic range value based on the given probability.
+    #
+    # This method takes a `Range` variable as input and returns the same variable unless
+    # a random value generated is less than the current chaos probability, in which case
+    # it returns a random value of begin and end for the range.
+    #
+    # Example passing a simple range:
+    #
+    # ```
+    # chaos = Chaos::Chaos.new
+    # chaos.probability = 0.8
+    # chaos.chaos(1..10) # => random range based on the probability
+    # ```
+    #
+    # Example passing a range with different types:
+    #
+    # ```
+    # chaos = Chaos::Chaos.new
+    # chaos.probability = 0.8
+    # rangeBegin : Int128 = 1
+    # rangeEnd : Int128 = 10
+    # chaos.chaos(rangeBegin..rangeEnd) # => random range based on the probability
+    # ```
+    #
+    # If the range have a value not handled by the method overloading,
+    # it will return the same range passed as input.
+    #
+    # Example:
+    #
+    # ```
+    # class Test
+    #   property name : String = "TEST"
+    # end
+    #
+    # object = Test.new
+    #
+    # chaos = Chaos::Chaos.new
+    # chaos.probability = 0.8
+    #
+    # chaos.chaos(object..object) # => object..object
+    # ```
+    def chaos(variable : Range) : Range
+      rand < @probability ? (variable = chaos(variable.begin)..chaos(variable.end)) : variable
+    end
 
     # Regex
 
