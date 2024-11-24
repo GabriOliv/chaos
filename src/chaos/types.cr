@@ -226,7 +226,19 @@ module Chaos
       rand < @probability ? (variable = Random.rand(0.0...1.0).to_f64) : variable
     end
 
-    # Char
+    # Returns a chaotic char `Char` value based on the given probability.
+    #
+    # This method takes a `Char` variable as input and returns the same variable unless
+    # a random value generated is less than the current chaos probability, in which case
+    # it returns a random value of a valid char.
+    #
+    # Example:
+    #
+    # ```
+    # chaos = Chaos::Chaos.new
+    # chaos.probability = 0.8
+    # puts chaos.chaos('a') # => random value of type Char based on the probability
+    # ```
     def chaos(variable : Char) : Char
       if rand < @probability
         # Safe char interval (0..0xd7ff and 0xe000..0x10ffff)
