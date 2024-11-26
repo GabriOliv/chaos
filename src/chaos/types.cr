@@ -262,10 +262,10 @@ module Chaos
                          interval2Begin + (random_position - interval1Size)
                        end
 
-        random_value.chr
-      else
-        variable
+        return random_value.chr
       end
+
+      return variable
     end
 
     # Returns a chaotic string value based on the given probability.
