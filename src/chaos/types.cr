@@ -1,7 +1,9 @@
 module Chaos
-  class Chaos
+  private class Modifier
+    # Returns a chaotic value based on the given probability.
+
     # Nil
-    def chaos(variable : Nil) : Nil
+    def self.apply(variable : Nil) : Nil
       variable
     end
 
@@ -18,8 +20,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(true) # => random value of type Bool based on the probability
     # ```
-    def chaos(variable : Bool) : Bool
-      rand < @probability ? !variable : variable
+    def self.apply(variable : Bool) : Bool
+      return !variable
     end
 
     # Returns a chaotic integer Int8 value based on the given probability.
@@ -35,8 +37,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(8_i8) # => random value of type Int8 based on the probability
     # ```
-    def chaos(variable : Int8) : Int8
-      rand < @probability ? (variable = Random.rand(-128_i8..127_i8).to_i8) : variable
+    def self.apply(variable : Int8) : Int8
+      return Random.rand(-128_i8..127_i8).to_i8
     end
 
     # Returns a chaotic integer Int16 value based on the given probability.
@@ -52,8 +54,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(16_i16) # => random value of type Int16 based on the probability
     # ```
-    def chaos(variable : Int16) : Int16
-      rand < @probability ? (variable = Random.rand(-32_768_i16..32_767_i16).to_i16) : variable
+    def self.apply(variable : Int16) : Int16
+      return Random.rand(-32_768_i16..32_767_i16).to_i16
     end
 
     # Returns a chaotic integer Int32 value based on the given probability.
@@ -69,8 +71,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(32_i32) # => random value of type Int32 based on the probability
     # ```
-    def chaos(variable : Int32) : Int32
-      rand < @probability ? (variable = Random.rand(-2_147_483_648_i32..2_147_483_647_i32).to_i32) : variable
+    def self.apply(variable : Int32) : Int32
+      return Random.rand(-2_147_483_648_i32..2_147_483_647_i32).to_i32
     end
 
     # Returns a chaotic integer Int64 value based on the given probability.
@@ -86,8 +88,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(64_i64) # => random value of type Int64 based on the probability
     # ```
-    def chaos(variable : Int64) : Int64
-      rand < @probability ? (variable = Random.rand(-9_223_372_036_854_775_808_i64..9_223_372_036_854_775_807_i64).to_i64) : variable
+    def self.apply(variable : Int64) : Int64
+      return Random.rand(-9_223_372_036_854_775_808_i64..9_223_372_036_854_775_807_i64).to_i64
     end
 
     # Returns a chaotic integer Int128 value based on the given probability.
@@ -103,8 +105,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(128_i128) # => random value of type Int128 based on the probability
     # ```
-    def chaos(variable : Int128) : Int128
-      rand < @probability ? (variable = Random.rand(-170_141_183_460_469_231_731_687_303_715_884_105_728_i128..170_141_183_460_469_231_731_687_303_715_884_105_727_i128).to_i128) : variable
+    def self.apply(variable : Int128) : Int128
+      return Random.rand(-170_141_183_460_469_231_731_687_303_715_884_105_728_i128..170_141_183_460_469_231_731_687_303_715_884_105_727_i128).to_i128
     end
 
     # Returns a chaotic integer UInt8 value based on the given probability.
@@ -120,8 +122,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(8_u8) # => random value of type UInt8 based on the probability
     # ```
-    def chaos(variable : UInt8) : UInt8
-      rand < @probability ? (variable = Random.rand(0_u8..255_u8).to_u8) : variable
+    def self.apply(variable : UInt8) : UInt8
+      return Random.rand(0_u8..255_u8).to_u8
     end
 
     # Returns a chaotic integer UInt16 value based on the given probability.
@@ -137,8 +139,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(16_u16) # => random value of type UInt16 based on the probability
     # ```
-    def chaos(variable : UInt16) : UInt16
-      rand < @probability ? (variable = Random.rand(0_u16..65_535_u16).to_u16) : variable
+    def self.apply(variable : UInt16) : UInt16
+      return Random.rand(0_u16..65_535_u16).to_u16
     end
 
     # Returns a chaotic integer UInt32 value based on the given probability.
@@ -154,8 +156,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(32_u32) # => random value of type UInt32 based on the probability
     # ```
-    def chaos(variable : UInt32) : UInt32
-      rand < @probability ? (variable = Random.rand(0_u32..4_294_967_295_u32).to_u32) : variable
+    def self.apply(variable : UInt32) : UInt32
+      return Random.rand(0_u32..4_294_967_295_u32).to_u32
     end
 
     # Returns a chaotic integer UInt64 value based on the given probability.
@@ -171,8 +173,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(64_u64) # => random value of type UInt64 based on the probability
     # ```
-    def chaos(variable : UInt64) : UInt64
-      rand < @probability ? (variable = Random.rand(0_u64..18_446_744_073_709_551_615_u64).to_u64) : variable
+    def self.apply(variable : UInt64) : UInt64
+      return Random.rand(0_u64..18_446_744_073_709_551_615_u64).to_u64
     end
 
     # Returns a chaotic integer UInt128 value based on the given probability.
@@ -188,8 +190,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(128_u128) # => random value of type UInt128 based on the probability
     # ```
-    def chaos(variable : UInt128) : UInt128
-      rand < @probability ? (variable = Random.rand(0_u128..340_282_366_920_938_463_463_374_607_431_768_211_455_u128).to_u128) : variable
+    def self.apply(variable : UInt128) : UInt128
+      return Random.rand(0_u128..340_282_366_920_938_463_463_374_607_431_768_211_455_u128).to_u128
     end
 
     # Returns a chaotic float Float32 value based on the given probability.
@@ -205,8 +207,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(32.0_f32) # => random value of type Float32 based on the probability
     # ```
-    def chaos(variable : Float32) : Float32
-      rand < @probability ? (variable = Random.rand(0.0...1.0).to_f32) : variable
+    def self.apply(variable : Float32) : Float32
+      return Random.rand(0.0...1.0).to_f32
     end
 
     # Returns a chaotic float Float64 value based on the given probability.
@@ -222,8 +224,8 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos(64.0_f64) # => random value of type Float64 based on the probability
     # ```
-    def chaos(variable : Float64) : Float64
-      rand < @probability ? (variable = Random.rand(0.0...1.0).to_f64) : variable
+    def self.apply(variable : Float64) : Float64
+      return Random.rand(0.0...1.0).to_f64
     end
 
     # Returns a chaotic char value based on the given probability.
@@ -239,33 +241,29 @@ module Chaos
     # chaos.probability = 0.8
     # puts chaos.chaos('a') # => random value of type Char based on the probability
     # ```
-    def chaos(variable : Char) : Char
-      if rand < @probability
-        # Safe char interval (0..0xd7ff and 0xe000..0x10ffff)
+    def self.apply(variable : Char) : Char
+      # Safe char interval (0..0xd7ff and 0xe000..0x10ffff)
 
-        # interval1 = (0_u32..0xd7ff_u32)
-        interval1Begin = 0_u32
-        interval1Size = 55296
+      # interval1 = (0_u32..0xd7ff_u32)
+      interval1Begin = 0_u32
+      interval1Size = 55296
 
-        # interval2 = (0xe000_u32..0x10ffff_u32)
-        interval2Begin = 57344
-        interval2Size = 1056768
+      # interval2 = (0xe000_u32..0x10ffff_u32)
+      interval2Begin = 57344
+      interval2Size = 1056768
 
-        # Total size of the two intervals
-        total_size = 1112064
-        random_position = rand(0...total_size)
+      # Total size of the two intervals
+      total_size = 1112064
+      random_position = rand(0...total_size)
 
-        # Determine which interval the random position falls into
-        random_value = if random_position < interval1Size
-                         interval1Begin + random_position
-                       else
-                         interval2Begin + (random_position - interval1Size)
-                       end
+      # Determine which interval the random position falls into
+      random_value = if random_position < interval1Size
+                       interval1Begin + random_position
+                     else
+                       interval2Begin + (random_position - interval1Size)
+                     end
 
-        return random_value.chr
-      end
-
-      return variable
+      return random_value.chr
     end
 
     # Returns a chaotic string value based on the given probability.
@@ -281,9 +279,9 @@ module Chaos
     # chaos.probability = 0.8
     # chaos.chaos("abcdefghi") # => chaotic string based on the probability
     # ```
-    def chaos(variable : String) : String
-      rand < @probability ? (variable = variable.chars.shuffle.join) : variable
-      rand < @probability ? (variable = variable.each_char.map { |c| rand < @probability ? chaos(c) : c }.join) : variable
+    def self.apply(variable : String) : String
+      aux = variable.chars.shuffle.join
+      return aux.chars.shuffle.join.each_char.map { |c| rand < Chaos.probability ? Chaos.modifier(c) : c }.join
     end
 
     # Symbol
@@ -301,9 +299,8 @@ module Chaos
     # chaos.probability = 0.8
     # chaos.chaos([1, 2, 3, 4, 5]) # => shuffled array based on the probability
     # ```
-    def chaos(variable : Array) : Array
-      rand < @probability ? (variable = variable.reverse) : variable
-      rand < @probability ? (variable = variable.shuffle) : variable
+    def self.apply(variable : Array) : Array
+      return variable.reverse.shuffle
     end
 
     # Array-like
@@ -353,8 +350,8 @@ module Chaos
     #
     # chaos.chaos(object..object) # => object..object
     # ```
-    def chaos(variable : Range) : Range
-      rand < @probability ? (variable = chaos(variable.begin)..chaos(variable.end)) : variable
+    def self.apply(variable : Range) : Range
+      return apply(variable.begin)..apply(variable.end)
     end
 
     # Regex
@@ -387,7 +384,7 @@ module Chaos
     #
     # chaos.chaos(object) # => object
     # ```
-    def chaos(value)
+    def self.apply(value)
       value
     end
   end

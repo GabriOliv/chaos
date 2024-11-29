@@ -20,6 +20,7 @@ Structure:
 	- Added Release Notes folder to store release notes for each version.
 - **Changed**
 	- gitignore: Updated to allow the ChangeLog and Release Notes folder on documentation.
+	- refactor: Implement Singleton and Facade design patterns
 - **Deprecated**
 - **Removed**
 - **Fixed**
