@@ -53,4 +53,9 @@ module Chaos
   def self.modifier(object : Object) : Object
     rand < Chaos.probability ? Modifier.apply(object) : object
   end
+
+  # Facade method to access Error Class
+  def self.error
+    Error.raise if rand < Chaos.probability
+  end
 end
